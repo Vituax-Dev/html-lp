@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>E-book: Como Construir sua Cloud Privada | Vituax Cloud</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --vtx-main-background:#FFFFFF;
+    --vtx-light:#F9F9F9;
+    --vtx-gray-light:#ECEEF2;
+    --vtx-tertiary:#C4C9D2;
+    --vtx-gray:#868B95;
+    --vtx-primary:#474B54;
+    --vtx-black:#252930;
+    --vtx-blue-light:#C1CAFB;
+    --vtx-blue-medium:#647AF4;
+    --vtx-blue-dark:#4B5CB7;
+    --vtx-font-ui:'Roboto', system-ui, sans-serif;
+    --vtx-font-display:'Red Hat Display', 'Roboto', sans-serif;
+  }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { margin:0; background:var(--vtx-main-background); font-family:var(--vtx-font-ui); color:var(--vtx-primary); }
+  a { color:var(--vtx-blue-dark); text-decoration:none; }
+  a:hover { color:var(--vtx-blue-medium); }
+  .vtx-field { height:48px; padding:0 16px; border:none; border-radius:12px; background:var(--vtx-gray-light); font-family:var(--vtx-font-ui); font-size:16px; letter-spacing:0.02em; color:var(--vtx-black); outline:none; width:100%; }
+  .vtx-field:focus { box-shadow:0 0 0 1px var(--vtx-blue-medium); }
+  .vtx-label { display:flex; flex-direction:column; gap:8px; }
+  .vtx-label > span { font-size:14px; line-height:20px; letter-spacing:0.02em; font-weight:600; color:var(--vtx-black); }
+  .vtx-btn { display:inline-flex; align-items:center; justify-content:center; height:48px; border:none; cursor:pointer; font-family:var(--vtx-font-ui); border-radius:12px; background:var(--vtx-blue-dark); color:#FFF; font-size:16px; font-weight:500; letter-spacing:0.02em; transition:opacity 140ms ease; }
+  .vtx-btn:hover { opacity:0.8; }
+  .vtx-card { display:flex; gap:16px; align-items:flex-start; padding:28px; background:var(--vtx-light); border-radius:16px; box-shadow:0 0 4px rgba(217,217,217,0.4); }
+  .vtx-num { flex:none; width:28px; height:28px; border-radius:100px; background:rgba(193,202,251,0.28); color:var(--vtx-blue-dark); display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; }
+  .vtx-card p { margin:0; font-size:18px; line-height:28px; letter-spacing:0.01em; color:var(--vtx-black); text-wrap:pretty; }
+  .hero { display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:72px; padding:80px 48px 96px; background:#252930; color:#ECEEF2; }
+  .learn-grid { display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:20px; }
+  .span2 { grid-column:span 2; }
+  @media (max-width:900px) {
+    .hero { grid-template-columns:1fr; gap:40px; padding:48px 24px 64px; }
+    .hero h1 { font-size:36px; }
+    .learn-grid { grid-template-columns:1fr; }
+    .span2 { grid-column:auto; }
+    header, footer, section { padding-left:24px !important; padding-right:24px !important; }
+  }
+</style>
+</head>
+<body>
+
+<header style="position:sticky; top:0; z-index:20; display:flex; align-items:center; gap:24px; padding:16px 48px; background:#252930; box-shadow:0 1px 8px rgba(0,0,0,0.18);">
+  <img src="assets/vituax-logo-cloud-branco-crop.png" alt="Vituax Cloud" style="height:30px; width:auto; display:block;">
+</header>
+
+<section class="hero">
+  <div style="display:flex; flex-direction:column; align-items:flex-start; gap:20px; max-width:660px;">
+    <span style="display:inline-block; padding:6px 14px; border-radius:100px; background:rgba(193,202,251,0.16); color:#C1CAFB; font-size:12px; line-height:16px; letter-spacing:0.12em; text-transform:uppercase;">E-book gratuito · Guia prático</span>
+    <h1 style="margin:0; font-family:var(--vtx-font-display); font-weight:700; font-size:52px; line-height:1.06; letter-spacing:-0.01em; color:#FFFFFF; text-wrap:pretty;">Como Construir sua Cloud Privada</h1>
+    <p style="margin:0; font-size:18px; line-height:30px; letter-spacing:0.01em; color:#C4C9D2; text-wrap:pretty;">Toda vez que sua empresa revende cloud de um hyperscaler, uma fatia da margem fica pelo caminho — e o cliente final enxerga a marca de outra empresa, não a sua.</p>
+    <p style="margin:0; font-size:18px; line-height:30px; letter-spacing:0.01em; color:#C4C9D2; text-wrap:pretty;">Esse e-book mostra como sair dessa dependência e construir sua própria cloud, com o controle, a margem e a marca que são seus por direito.</p>
+  </div>
+
+  <div style="display:flex; flex-direction:column; gap:16px;">
+    <h2 style="margin:0; font-family:var(--vtx-font-display); font-weight:700; font-size:24px; line-height:32px; color:#FFFFFF;">Receba o e-book no seu e-mail</h2>
+    <div id="formulario" style="background:var(--vtx-main-background); border-radius:16px; padding:40px; box-shadow:0 0 4px rgba(217,217,217,0.4); display:flex; flex-direction:column; gap:20px;">
+      <!-- Substituir este bloco pelo embed do RD Station se preferir o formulário nativo -->
+      <form action="#" method="post" style="display:flex; flex-direction:column; gap:20px;">
+        <div class="learn-grid" style="align-items:end;">
+          <label class="vtx-label span2"><span>Nome</span><input class="vtx-field" type="text" name="nome" placeholder="Seu nome completo" required></label>
+          <label class="vtx-label span2"><span>E-mail corporativo</span><input class="vtx-field" type="email" name="email" placeholder="nome@suaempresa.com.br" required></label>
+          <label class="vtx-label"><span>WhatsApp</span><input class="vtx-field" type="tel" name="telefone" placeholder="(00) 00000-0000"></label>
+          <label class="vtx-label"><span>Empresa</span><input class="vtx-field" type="text" name="empresa" placeholder="Nome da empresa"></label>
+          <label class="vtx-label span2"><span>Cargo</span><input class="vtx-field" type="text" name="cargo" placeholder="Seu cargo"></label>
+        </div>
+        <button class="vtx-btn" type="submit">Quero meu e-book grátis</button>
+      </form>
+      <p style="margin:0; font-size:12px; line-height:16px; letter-spacing:0.01em; color:var(--vtx-gray);">Ao enviar, você concorda em receber comunicações da Vituax. Área reservada para o formulário do RD Station.</p>
+    </div>
+  </div>
+</section>
+
+<section style="padding:96px 48px; background:var(--vtx-main-background);">
+  <div style="max-width:1080px; margin:0 auto; display:flex; flex-direction:column; gap:40px;">
+    <h2 style="margin:0; font-family:var(--vtx-font-display); font-weight:700; font-size:40px; line-height:48px; color:var(--vtx-black);">O que você vai aprender</h2>
+    <div class="learn-grid">
+      <div class="vtx-card"><span class="vtx-num">01</span><p>O que é uma cloud privada white-label e por que ela muda o jogo para MSPs</p></div>
+      <div class="vtx-card"><span class="vtx-num">02</span><p>Como funciona o modelo de parceria (o que a Vituax entrega e o que fica com você)</p></div>
+      <div class="vtx-card"><span class="vtx-num">03</span><p>Passo a passo prático para lançar sua própria marca de cloud</p></div>
+      <div class="vtx-card"><span class="vtx-num">04</span><p>Como calcular a margem real da sua operação hoje vs. com cloud própria</p></div>
+      <div class="vtx-card span2"><span class="vtx-num">05</span><p>Erros comuns que atrasam MSPs nessa transição</p></div>
+    </div>
+  </div>
+</section>
+
+<footer style="display:flex; align-items:center; justify-content:space-between; gap:24px; padding:28px 48px; background:var(--vtx-light);">
+  <span style="font-size:12px; line-height:16px; letter-spacing:0.01em; color:var(--vtx-gray);">© Vituax Cloud</span>
+</footer>
+
+</body>
+</html>
