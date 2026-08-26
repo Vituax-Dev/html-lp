@@ -109,5 +109,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <span style="font-size:12px; line-height:16px; letter-spacing:0.01em; color:var(--vtx-gray);">© Vituax Cloud</span>
 </footer>
 
+  <script>
+(function(){
+  var form = document.querySelector('#formulario form');
+  if (!form) return;
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var d = function(n){ var el = form.elements[n]; return el ? el.value.trim() : ''; };
+    var tel = d('telefone').replace(/\D/g,'');
+    var done = false;
+    var go = function(){ if(!done){ done = true; window.location.href='/obrigado-ebook-cloud-privada'; } };
+    window.dataLayer = window.dataLayer || [];
+    dataLayer.push({
+      event:'lead',
+      user_name: d('nome'),
+      user_email: d('email').toLowerCase(),
+      user_phone: tel ? '+55'+tel : '',
+      empresa: d('empresa'),
+      cargo: d('cargo'),
+      eventCallback: go, eventTimeout: 2000
+    });
+    setTimeout(go, 2200);
+  });
+})();
+</script>
+  
 </body>
 </html>
