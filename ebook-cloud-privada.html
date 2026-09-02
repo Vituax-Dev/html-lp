@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <!-- Google Tag Manager -->
+<!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -56,11 +56,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </style>
 </head>
 <body>
-  <!-- Google Tag Manager (noscript) -->
+
+    <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KTNQH6LJ"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-
+  
 <header style="position:sticky; top:0; z-index:20; display:flex; align-items:center; gap:24px; padding:16px 48px; background:#252930; box-shadow:0 1px 8px rgba(0,0,0,0.18);">
   <img src="assets/vituax-logo-cloud-branco-crop.png" alt="Vituax Cloud" style="height:30px; width:auto; display:block;">
 </header>
@@ -75,19 +76,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <div style="display:flex; flex-direction:column; gap:16px;">
     <h2 style="margin:0; font-family:var(--vtx-font-display); font-weight:700; font-size:24px; line-height:32px; color:#FFFFFF;">Receba o e-book no seu e-mail</h2>
-    <div id="formulario" style="background:var(--vtx-main-background); border-radius:16px; padding:40px; box-shadow:0 0 4px rgba(217,217,217,0.4); display:flex; flex-direction:column; gap:20px;">
-      <!-- Substituir este bloco pelo embed do RD Station se preferir o formulário nativo -->
-      <form action="#" method="post" style="display:flex; flex-direction:column; gap:20px;">
-        <div class="learn-grid" style="align-items:end;">
-          <label class="vtx-label span2"><span>Nome</span><input class="vtx-field" type="text" name="nome" placeholder="Seu nome completo" required></label>
-          <label class="vtx-label span2"><span>E-mail corporativo</span><input class="vtx-field" type="email" name="email" placeholder="nome@suaempresa.com.br" required></label>
-          <label class="vtx-label"><span>WhatsApp</span><input class="vtx-field" type="tel" name="telefone" placeholder="(00) 00000-0000"></label>
-          <label class="vtx-label"><span>Empresa</span><input class="vtx-field" type="text" name="empresa" placeholder="Nome da empresa"></label>
-          <label class="vtx-label span2"><span>Cargo</span><input class="vtx-field" type="text" name="cargo" placeholder="Seu cargo"></label>
-        </div>
-        <button class="vtx-btn" type="submit">Quero meu e-book grátis</button>
-      </form>
-      <p style="margin:0; font-size:12px; line-height:16px; letter-spacing:0.01em; color:var(--vtx-gray);">Ao enviar, você concorda em receber comunicações da Vituax. Área reservada para o formulário do RD Station.</p>
+    <div id="formulario" style="background:var(--vtx-main-background); border-radius:16px; padding:16px; box-shadow:0 0 4px rgba(217,217,217,0.4);">
+      <div role="main" id="forms_lp_ebook_como_construir_cloud_pivada-ac281bfc692edcee7bad"></div>
+      <script type="text/javascript" src="https://d335luupugsy2.cloudfront.net/js/rdstation-forms/stable/rdstation-forms.min.js"></script>
+      <script type="text/javascript"> new RDStationForms('forms_lp_ebook_como_construir_cloud_pivada-ac281bfc692edcee7bad', 'null').createForm();</script>
     </div>
   </div>
 </section>
@@ -109,30 +101,5 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <span style="font-size:12px; line-height:16px; letter-spacing:0.01em; color:var(--vtx-gray);">© Vituax Cloud</span>
 </footer>
 
-  <script>
-(function(){
-  var form = document.querySelector('#formulario form');
-  if (!form) return;
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    var d = function(n){ var el = form.elements[n]; return el ? el.value.trim() : ''; };
-    var tel = d('telefone').replace(/\D/g,'');
-    var done = false;
-    var go = function(){ if(!done){ done = true; window.location.href='/obrigado-ebook-cloud-privada'; } };
-    window.dataLayer = window.dataLayer || [];
-    dataLayer.push({
-      event:'lead',
-      user_name: d('nome'),
-      user_email: d('email').toLowerCase(),
-      user_phone: tel ? '+55'+tel : '',
-      empresa: d('empresa'),
-      cargo: d('cargo'),
-      eventCallback: go, eventTimeout: 2000
-    });
-    setTimeout(go, 2200);
-  });
-})();
-</script>
-  
 </body>
 </html>
