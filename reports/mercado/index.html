@@ -1,0 +1,35 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>Vituax | O tamanho do mercado</title><meta name="theme-color" content="#ffffff"><link rel="icon" href="../../assets/favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#F5F5F8;color:#0F1216;font:16px/1.5 Roboto,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.login{min-height:100dvh;display:grid;place-items:center;padding:24px;position:relative;overflow:hidden}
+.login::before,.login::after{content:"";position:absolute;border-radius:50%;filter:blur(90px);opacity:.55}.login::before{width:520px;height:520px;right:-140px;top:-200px;background:#C9BFF2}.login::after{width:420px;height:420px;left:-140px;bottom:-220px;background:#BFD4FF}
+.box{position:relative;max-width:440px;width:100%;background:#fff;border:1px solid #E3E4E9;border-radius:22px;padding:38px 36px 32px;box-shadow:0 2px 4px rgba(15,18,22,.05),0 28px 60px -24px rgba(15,18,22,.28)}
+img{height:26px;width:auto;display:block;margin-bottom:28px}h1{margin:0 0 10px;font-size:30px;line-height:1.1;font-weight:800;letter-spacing:-.03em}
+p{margin:0 0 24px;color:#5C5F66;font-size:15.5px}button{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;font:500 16px Roboto,sans-serif;color:#fff;background:#3D04AA;border:0;border-radius:12px;padding:14px 22px;cursor:pointer;min-height:50px}
+button:hover{background:#2F0384}button:focus-visible{outline:3px solid #647AF4;outline-offset:2px}button svg{width:18px;height:18px;background:#fff;border-radius:50%;padding:3px;box-sizing:content-box}
+#msg{margin:16px 0 0;font-size:14.5px;min-height:1.5em}.err{color:#C5221F}.wait{color:#5C5F66}</style></head><body>
+<div class="login"><div class="box"><img src="../../assets/logo-roxo-escuro.png" alt="Vituax"><h1>O tamanho do mercado</h1><p>Estudo de mercado da Vituax: mercado total, atendível e meta de 3 anos por segmento.<br>Acesso restrito a contas @starti.com.br e @vituax.com.</p>
+<button id="entrar"><svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>Entrar com Google</button><p id="msg"></p></div></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+// Chave "anon" do Supabase: pública por natureza. Quem protege o conteúdo é a regra do bucket (só e-mails @starti.com.br e @vituax.com leem).
+const CFG={SUPABASE_URL:'https://gkefmzdbsrbqfribepfn.supabase.co',SUPABASE_ANON_KEY:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdrZWZtemRic3JicWZyaWJlcGZuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIxNDcyMDEsImV4cCI6MjA5NzcyMzIwMX0.lnV_rmQBENgWS2xDGA9ZiFs6R8TI1bWjTelg_Hg3lck',DOMINIOS:['starti.com.br','vituax.com'],BUCKET:'vituax-reports',OBJ:'vituax-mercado-20261125-1520.html'};
+const sb=supabase.createClient(CFG.SUPABASE_URL,CFG.SUPABASE_ANON_KEY),msg=document.getElementById('msg');
+document.getElementById('entrar').onclick=()=>{aviso('wait','Abrindo o Google…');sb.auth.signInWithOAuth({provider:'google',options:{redirectTo:location.origin+location.pathname,queryParams:{prompt:'select_account'}}}).then(r=>{if(r.error)aviso('err','Não consegui iniciar o login: '+r.error.message)})};
+function aviso(c,t){msg.className=c;msg.textContent=t}
+let aberto=false;
+async function abrir(session){if(aberto||!session)return;aberto=true;
+try{const email=(session.user.email||'').toLowerCase();
+if(!CFG.DOMINIOS.some(d=>email.endsWith('@'+d))){await sb.auth.signOut();aberto=false;aviso('err','Acesso permitido apenas para contas @'+CFG.DOMINIOS.join(' ou @')+'. Você entrou com '+email+'.');return}
+aviso('wait','Carregando o estudo…');
+const {data,error}=await sb.storage.from(CFG.BUCKET).download(CFG.OBJ);if(error)throw error;
+const html=await data.text();history.replaceState(null,'',location.pathname);document.open();document.write(html);document.close()
+}catch(e){aberto=false;aviso('err','Não consegui abrir o estudo ('+(e&&e.message||e)+'). Recarregue a página.')}}
+// volta do Google: mostra o que está acontecendo em vez de ficar parado
+const volta=new URLSearchParams(location.hash.slice(1)),busca=new URLSearchParams(location.search),falha=volta.get('error_description')||busca.get('error_description');
+if(falha)aviso('err','O login não foi concluído: '+falha.replace(/\+/g,' '));
+else if(volta.get('access_token')||busca.get('code')){aviso('wait','Entrando…');setTimeout(()=>{if(!aberto)aviso('err','O login demorou mais que o esperado. Recarregue a página e tente de novo.')},15000)}
+sb.auth.onAuthStateChange((_e,s)=>{if(s)setTimeout(()=>abrir(s),0)});
+sb.auth.getSession().then(r=>abrir(r.data.session)).catch(e=>aviso('err','Erro ao verificar o login: '+(e&&e.message||e)));
+</script></body></html>
