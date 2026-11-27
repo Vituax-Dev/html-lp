@@ -14,7 +14,7 @@ button:hover{background:#2F0384}button:focus-visible{outline:3px solid #647AF4;o
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script>
 // Chave "anon" do Supabase: pública por natureza. Quem protege o conteúdo é a regra do bucket (só e-mails @starti.com.br e @vituax.com leem).
-const CFG={SUPABASE_URL:'https://gkefmzdbsrbqfribepfn.supabase.co',SUPABASE_ANON_KEY:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdrZWZtemRic3JicWZyaWJlcGZuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIxNDcyMDEsImV4cCI6MjA5NzcyMzIwMX0.lnV_rmQBENgWS2xDGA9ZiFs6R8TI1bWjTelg_Hg3lck',DOMINIOS:['starti.com.br','vituax.com'],BUCKET:'vituax-reports',OBJ:'vituax-consulta-periodo-20261126-0953.html'};
+const CFG={SUPABASE_URL:'https://gkefmzdbsrbqfribepfn.supabase.co',SUPABASE_ANON_KEY:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdrZWZtemRic3JicWZyaWJlcGZuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIxNDcyMDEsImV4cCI6MjA5NzcyMzIwMX0.lnV_rmQBENgWS2xDGA9ZiFs6R8TI1bWjTelg_Hg3lck',DOMINIOS:['starti.com.br','vituax.com'],BUCKET:'vituax-reports',OBJ:'vituax-consulta-periodo-20261126-2124.html'};
 const sb=supabase.createClient(CFG.SUPABASE_URL,CFG.SUPABASE_ANON_KEY),msg=document.getElementById('msg');
 document.getElementById('entrar').onclick=()=>{aviso('wait','Abrindo o Google…');sb.auth.signInWithOAuth({provider:'google',options:{redirectTo:location.origin+location.pathname,queryParams:{prompt:'select_account'}}}).then(r=>{if(r.error)aviso('err','Não consegui iniciar o login: '+r.error.message)})};
 function aviso(c,t){msg.className=c;msg.textContent=t}
